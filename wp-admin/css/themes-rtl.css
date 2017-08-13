@@ -1644,8 +1644,11 @@ body.full-overlay-active {
 	min-width: 299px;
 	max-width: 599px;
 	width: 18%;
+<<<<<<< HEAD
 	width: -webkit-calc( 18% - 1px );
 	width: calc( 18% - 1px );
+=======
+>>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 	height: 45px;
 	border-top: 1px solid #ddd;
 	background: #eee;

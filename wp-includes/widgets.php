@@ -1441,6 +1441,7 @@ function wp_widgets_init() {
 	}
 
 	register_widget( 'WP_Widget_Pages' );
+<<<<<<< HEAD
 
 	register_widget( 'WP_Widget_Calendar' );
 
@@ -1475,6 +1476,40 @@ function wp_widgets_init() {
 	register_widget( 'WP_Nav_Menu_Widget' );
 
 	register_widget( 'WP_Widget_Custom_HTML' );
+=======
+
+	register_widget( 'WP_Widget_Calendar' );
+
+	register_widget( 'WP_Widget_Archives' );
+
+	if ( get_option( 'link_manager_enabled' ) ) {
+		register_widget( 'WP_Widget_Links' );
+	}
+
+	register_widget( 'WP_Widget_Media_Audio' );
+
+	register_widget( 'WP_Widget_Media_Image' );
+
+	register_widget( 'WP_Widget_Media_Video' );
+
+	register_widget( 'WP_Widget_Meta' );
+
+	register_widget( 'WP_Widget_Search' );
+
+	register_widget( 'WP_Widget_Text' );
+
+	register_widget( 'WP_Widget_Categories' );
+
+	register_widget( 'WP_Widget_Recent_Posts' );
+
+	register_widget( 'WP_Widget_Recent_Comments' );
+
+	register_widget( 'WP_Widget_RSS' );
+
+	register_widget( 'WP_Widget_Tag_Cloud' );
+
+	register_widget( 'WP_Nav_Menu_Widget' );
+>>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 
 	/**
 	 * Fires after all default WordPress widgets have been registered.

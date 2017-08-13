@@ -43,6 +43,7 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 			<a href="freedoms.php" class="nav-tab"><?php _e( 'Freedoms' ); ?></a>
 		</h2>
 
+<<<<<<< HEAD
 		<div class="changelog point-releases">
 			<h3><?php _e( 'Maintenance Release' ); ?></h3>
 			<p>
@@ -65,6 +66,8 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 				</p>
 		</div>
 
+=======
+>>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		<div class="feature-section one-col">
 			<div class="col">
 				<h2><?php _e( 'An Update with You in Mind' ); ?></h2>

@@ -1525,12 +1525,21 @@
 		 */
 		_setupTitleUI: function() {
 			var control = this, titleEl;
+<<<<<<< HEAD
 
 			// Ensure that whitespace is trimmed on blur so placeholder can be shown.
 			control.container.find( '.edit-menu-item-title' ).on( 'blur', function() {
 				$( this ).val( $.trim( $( this ).val() ) );
 			} );
 
+=======
+
+			// Ensure that whitespace is trimmed on blur so placeholder can be shown.
+			control.container.find( '.edit-menu-item-title' ).on( 'blur', function() {
+				$( this ).val( $.trim( $( this ).val() ) );
+			} );
+
+>>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 			titleEl = control.container.find( '.menu-item-title' );
 			control.setting.bind( function( item ) {
 				var trimmedTitle, titleText;
@@ -2229,7 +2238,12 @@
 				}
 			} );
 
+<<<<<<< HEAD
 			control.container.find( '.menu-delete-item .button-link-delete' ).on( 'click', function( event ) {
+=======
+			control.container.find( '.menu-delete-item' ).on( 'click', function( event ) {
+				event.stopPropagation();
+>>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 				event.preventDefault();
 				control.setting.set( false );
 			});

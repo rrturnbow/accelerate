@@ -34,6 +34,7 @@ abstract class WP_Widget_Media extends WP_Widget {
 	);
 
 	/**
+<<<<<<< HEAD
 	 * Whether or not the widget has been registered yet.
 	 *
 	 * @since 4.8.1
@@ -42,6 +43,8 @@ abstract class WP_Widget_Media extends WP_Widget {
 	protected $registered = false;
 
 	/**
+=======
+>>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 	 * Constructor.
 	 *
 	 * @since 4.8.0
@@ -94,6 +97,7 @@ abstract class WP_Widget_Media extends WP_Widget {
 	 *
 	 * @since 4.8.0
 	 * @access public
+<<<<<<< HEAD
 	 *
 	 * @param integer $number Optional. The unique order number of this widget instance
 	 *                        compared to other instances of the same class. Default -1.
@@ -104,6 +108,10 @@ abstract class WP_Widget_Media extends WP_Widget {
 			return;
 		}
 		$this->registered = true;
+=======
+	 */
+	public function _register() {
+>>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 
 		// Note that the widgets component in the customizer will also do the 'admin_print_scripts-widgets.php' action in WP_Customize_Widgets::print_scripts().
 		add_action( 'admin_print_scripts-widgets.php', array( $this, 'enqueue_admin_scripts' ) );
@@ -116,6 +124,11 @@ abstract class WP_Widget_Media extends WP_Widget {
 		add_action( 'admin_footer-widgets.php', array( $this, 'render_control_template_scripts' ) );
 
 		add_filter( 'display_media_states', array( $this, 'display_media_state' ), 10, 2 );
+<<<<<<< HEAD
+=======
+
+		parent::_register();
+>>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 	}
 
 	/**
