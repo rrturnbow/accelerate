@@ -1864,14 +1864,10 @@ function wp_get_object_terms($object_ids, $taxonomies, $args = array()) {
 	$args['taxonomy'] = $taxonomies;
 	$args['object_ids'] = $object_ids;
 
-<<<<<<< HEAD
 	// Taxonomies registered without an 'args' param are handled here.
 	if ( ! empty( $taxonomies ) ) {
 		$terms = array_merge( $terms, get_terms( $args ) );
 	}
-=======
-	$terms = array_merge( $terms, get_terms( $args ) );
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 
 	/**
 	 * Filters the terms for a given object or objects.

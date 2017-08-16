@@ -1363,18 +1363,11 @@
 	wp.api.init = function( args ) {
 		var endpoint, attributes = {}, deferred, promise;
 
-<<<<<<< HEAD
 		args                      = args || {};
 		attributes.apiRoot        = args.apiRoot || wpApiSettings.root || '/wp-json';
 		attributes.versionString  = args.versionString || wpApiSettings.versionString || 'wp/v2/';
 		attributes.schema         = args.schema || null;
 		attributes.modelEndpoints = args.modelEndpoints || [ 'me', 'settings' ];
-=======
-		args                     = args || {};
-		attributes.apiRoot       = args.apiRoot || wpApiSettings.root || '/wp-json';
-		attributes.versionString = args.versionString || wpApiSettings.versionString || 'wp/v2/';
-		attributes.schema        = args.schema || null;
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		if ( ! attributes.schema && attributes.apiRoot === wpApiSettings.root && attributes.versionString === wpApiSettings.versionString ) {
 			attributes.schema = wpApiSettings.schema;
 		}

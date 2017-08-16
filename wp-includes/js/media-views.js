@@ -8227,21 +8227,13 @@ UploaderInline = View.extend({
 	},
 	show: function() {
 		this.$el.removeClass( 'hidden' );
-<<<<<<< HEAD
 		if ( this.controller.$uploaderToggler && this.controller.$uploaderToggler.length ) {
-=======
-		if ( this.controller.$uploaderToggler.length ) {
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 			this.controller.$uploaderToggler.attr( 'aria-expanded', 'true' );
 		}
 	},
 	hide: function() {
 		this.$el.addClass( 'hidden' );
-<<<<<<< HEAD
 		if ( this.controller.$uploaderToggler && this.controller.$uploaderToggler.length ) {
-=======
-		if ( this.controller.$uploaderToggler.length ) {
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 			this.controller.$uploaderToggler
 				.attr( 'aria-expanded', 'false' )
 				// Move focus back to the toggle button when closing the uploader.

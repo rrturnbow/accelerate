@@ -153,20 +153,13 @@ final class WP_oEmbed_Controller {
 	 *
 	 * @see WP_oEmbed::get_html()
 	 * @param WP_REST_Request $request Full data about the request.
-<<<<<<< HEAD
 	 * @return object|WP_Error oEmbed response data or WP_Error on failure.
-=======
-	 * @return WP_Error|array oEmbed response data or WP_Error on failure.
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 	 */
 	public function get_proxy_item( $request ) {
 		$args = $request->get_params();
 
 		// Serve oEmbed data from cache if set.
-<<<<<<< HEAD
 		unset( $args['_wpnonce'] );
-=======
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		$cache_key = 'oembed_' . md5( serialize( $args ) );
 		$data = get_transient( $cache_key );
 		if ( ! empty( $data ) ) {
@@ -176,7 +169,6 @@ final class WP_oEmbed_Controller {
 		$url = $request['url'];
 		unset( $args['url'] );
 
-<<<<<<< HEAD
 		// Copy maxwidth/maxheight to width/height since WP_oEmbed::fetch() uses these arg names.
 		if ( isset( $args['maxwidth'] ) ) {
 			$args['width'] = $args['maxwidth'];
@@ -185,8 +177,6 @@ final class WP_oEmbed_Controller {
 			$args['height'] = $args['maxheight'];
 		}
 
-=======
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		$data = _wp_oembed_get_object()->get_data( $url, $args );
 
 		if ( false === $data ) {

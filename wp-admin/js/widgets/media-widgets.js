@@ -184,15 +184,12 @@ wp.mediaWidgets = ( function( $ ) {
 							return;
 						}
 
-<<<<<<< HEAD
 						// If video, test for Vimeo and YouTube, otherwise, renderFail(). This should be removed once #34115 is resolved.
 						if ( 'video' === this.controller.options.mimeType && ! /vimeo|youtu\.?be/.test( urlParser.host ) ) {
 							embedLinkView.renderFail();
 							return;
 						}
 
-=======
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 						embedLinkView.dfd = $.ajax({
 							url: wp.media.view.settings.oEmbedProxyUrl,
 							data: {
@@ -438,12 +435,8 @@ wp.mediaWidgets = ( function( $ ) {
 		 *
 		 * @param {Object}         options - Options.
 		 * @param {Backbone.Model} options.model - Model.
-<<<<<<< HEAD
 		 * @param {jQuery}         options.el - Control field container element.
 		 * @param {jQuery}         options.syncContainer - Container element where fields are synced for the server.
-=======
-		 * @param {jQuery}         options.el - Control container element.
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		 * @returns {void}
 		 */
 		initialize: function initialize( options ) {
@@ -451,7 +444,6 @@ wp.mediaWidgets = ( function( $ ) {
 
 			Backbone.View.prototype.initialize.call( control, options );
 
-<<<<<<< HEAD
 			if ( ! ( control.model instanceof component.MediaWidgetModel ) ) {
 				throw new Error( 'Missing options.model' );
 			}
@@ -466,15 +458,6 @@ wp.mediaWidgets = ( function( $ ) {
 
 			control.$el.addClass( 'media-widget-control' );
 
-=======
-			if ( ! control.el ) {
-				throw new Error( 'Missing options.el' );
-			}
-			if ( ! ( control.model instanceof component.MediaWidgetModel ) ) {
-				throw new Error( 'Missing options.model' );
-			}
-
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 			// Allow methods to be passed in with control context preserved.
 			_.bindAll( control, 'syncModelToInputs', 'render', 'updateSelectedAttachment', 'renderPreview' );
 
@@ -578,11 +561,7 @@ wp.mediaWidgets = ( function( $ ) {
 		 */
 		syncModelToInputs: function syncModelToInputs() {
 			var control = this;
-<<<<<<< HEAD
 			control.syncContainer.find( '.media-widget-instance-property' ).each( function() {
-=======
-			control.$el.next( '.widget-content' ).find( '.media-widget-instance-property' ).each( function() {
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 				var input = $( this ), value;
 				value = control.model.get( input.data( 'property' ) );
 				if ( _.isUndefined( value ) ) {
@@ -1038,14 +1017,8 @@ wp.mediaWidgets = ( function( $ ) {
 	 * @returns {void}
 	 */
 	component.handleWidgetAdded = function handleWidgetAdded( event, widgetContainer ) {
-<<<<<<< HEAD
 		var fieldContainer, syncContainer, widgetForm, idBase, ControlConstructor, ModelConstructor, modelAttributes, widgetControl, widgetModel, widgetId, widgetInside, animatedCheckDelay = 50, renderWhenAnimationDone;
 		widgetForm = widgetContainer.find( '> .widget-inside > .form, > .widget-inside > form' ); // Note: '.form' appears in the customizer, whereas 'form' on the widgets admin screen.
-=======
-		var widgetContent, controlContainer, widgetForm, idBase, ControlConstructor, ModelConstructor, modelAttributes, widgetControl, widgetModel, widgetId, widgetInside, animatedCheckDelay = 50, renderWhenAnimationDone;
-		widgetForm = widgetContainer.find( '> .widget-inside > .form, > .widget-inside > form' ); // Note: '.form' appears in the customizer, whereas 'form' on the widgets admin screen.
-		widgetContent = widgetForm.find( '> .widget-content' );
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		idBase = widgetForm.find( '> .id_base' ).val();
 		widgetId = widgetForm.find( '> .widget-id' ).val();
 
@@ -1072,14 +1045,9 @@ wp.mediaWidgets = ( function( $ ) {
 		 * components", the JS template is rendered outside of the normal form
 		 * container.
 		 */
-<<<<<<< HEAD
 		fieldContainer = $( '<div></div>' );
 		syncContainer = widgetContainer.find( '.widget-content:first' );
 		syncContainer.before( fieldContainer );
-=======
-		controlContainer = $( '<div class="media-widget-control"></div>' );
-		widgetContent.before( controlContainer );
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 
 		/*
 		 * Sync the widget instance model attributes onto the hidden inputs that widgets currently use to store the state.
@@ -1087,11 +1055,7 @@ wp.mediaWidgets = ( function( $ ) {
 		 * from the start, without having to sync with hidden fields. See <https://core.trac.wordpress.org/ticket/33507>.
 		 */
 		modelAttributes = {};
-<<<<<<< HEAD
 		syncContainer.find( '.media-widget-instance-property' ).each( function() {
-=======
-		widgetContent.find( '.media-widget-instance-property' ).each( function() {
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 			var input = $( this );
 			modelAttributes[ input.data( 'property' ) ] = input.val();
 		});
@@ -1100,12 +1064,8 @@ wp.mediaWidgets = ( function( $ ) {
 		widgetModel = new ModelConstructor( modelAttributes );
 
 		widgetControl = new ControlConstructor({
-<<<<<<< HEAD
 			el: fieldContainer,
 			syncContainer: syncContainer,
-=======
-			el: controlContainer,
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 			model: widgetModel
 		});
 
@@ -1134,7 +1094,6 @@ wp.mediaWidgets = ( function( $ ) {
 	};
 
 	/**
-<<<<<<< HEAD
 	 * Setup widget in accessibility mode.
 	 *
 	 * @returns {void}
@@ -1180,8 +1139,6 @@ wp.mediaWidgets = ( function( $ ) {
 	};
 
 	/**
-=======
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 	 * Sync widget instance data sanitized from server back onto widget model.
 	 *
 	 * This gets called via the 'widget-updated' event when saving a widget from
@@ -1249,14 +1206,11 @@ wp.mediaWidgets = ( function( $ ) {
 				var widgetContainer = $( this );
 				component.handleWidgetAdded( new jQuery.Event( 'widget-added' ), widgetContainer );
 			});
-<<<<<<< HEAD
 
 			// Accessibility mode.
 			$( window ).on( 'load', function() {
 				component.setupAccessibleMode();
 			});
-=======
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		});
 	};
 

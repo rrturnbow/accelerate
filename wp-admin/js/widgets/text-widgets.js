@@ -3,13 +3,9 @@
 wp.textWidgets = ( function( $ ) {
 	'use strict';
 
-<<<<<<< HEAD
 	var component = {
 		dismissedPointers: []
 	};
-=======
-	var component = {};
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 
 	/**
 	 * Text widget control.
@@ -30,15 +26,9 @@ wp.textWidgets = ( function( $ ) {
 		/**
 		 * Initialize.
 		 *
-<<<<<<< HEAD
 		 * @param {Object} options - Options.
 		 * @param {jQuery} options.el - Control field container element.
 		 * @param {jQuery} options.syncContainer - Container element where fields are synced for the server.
-=======
-		 * @param {Object}         options - Options.
-		 * @param {Backbone.Model} options.model - Model.
-		 * @param {jQuery}         options.el - Control container element.
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		 * @returns {void}
 		 */
 		initialize: function initialize( options ) {
@@ -47,7 +37,6 @@ wp.textWidgets = ( function( $ ) {
 			if ( ! options.el ) {
 				throw new Error( 'Missing options.el' );
 			}
-<<<<<<< HEAD
 			if ( ! options.syncContainer ) {
 				throw new Error( 'Missing options.syncContainer' );
 			}
@@ -86,50 +75,19 @@ wp.textWidgets = ( function( $ ) {
 			control.fields = {
 				title: control.$el.find( '.title' ),
 				text: control.$el.find( '.text' )
-=======
-
-			Backbone.View.prototype.initialize.call( control, options );
-
-			/*
-			 * Create a container element for the widget control fields.
-			 * This is inserted into the DOM immediately before the the .widget-content
-			 * element because the contents of this element are essentially "managed"
-			 * by PHP, where each widget update cause the entire element to be emptied
-			 * and replaced with the rendered output of WP_Widget::form() which is
-			 * sent back in Ajax request made to save/update the widget instance.
-			 * To prevent a "flash of replaced DOM elements and re-initialized JS
-			 * components", the JS template is rendered outside of the normal form
-			 * container.
-			 */
-			control.fieldContainer = $( '<div class="text-widget-fields"></div>' );
-			control.fieldContainer.html( wp.template( 'widget-text-control-fields' ) );
-			control.widgetContentContainer = control.$el.find( '.widget-content:first' );
-			control.widgetContentContainer.before( control.fieldContainer );
-
-			control.fields = {
-				title: control.fieldContainer.find( '.title' ),
-				text: control.fieldContainer.find( '.text' )
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 			};
 
 			// Sync input fields to hidden sync fields which actually get sent to the server.
 			_.each( control.fields, function( fieldInput, fieldName ) {
 				fieldInput.on( 'input change', function updateSyncField() {
-<<<<<<< HEAD
 					var syncInput = control.syncContainer.find( 'input[type=hidden].' + fieldName );
 					if ( syncInput.val() !== fieldInput.val() ) {
 						syncInput.val( fieldInput.val() );
-=======
-					var syncInput = control.widgetContentContainer.find( 'input[type=hidden].' + fieldName );
-					if ( syncInput.val() !== $( this ).val() ) {
-						syncInput.val( $( this ).val() );
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 						syncInput.trigger( 'change' );
 					}
 				});
 
 				// Note that syncInput cannot be re-used because it will be destroyed with each widget-updated event.
-<<<<<<< HEAD
 				fieldInput.val( control.syncContainer.find( 'input[type=hidden].' + fieldName ).val() );
 			});
 		},
@@ -170,9 +128,6 @@ wp.textWidgets = ( function( $ ) {
 			setTimeout( function() { // Timeout to prevent click event from causing panel to immediately collapse.
 				wp.customize.Widgets.availableWidgetsPanel.open( sidebarControl );
 				wp.customize.Widgets.availableWidgetsPanel.$search.val( 'HTML' ).trigger( 'keyup' );
-=======
-				fieldInput.val( control.widgetContentContainer.find( 'input[type=hidden].' + fieldName ).val() );
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 			});
 		},
 
@@ -189,19 +144,11 @@ wp.textWidgets = ( function( $ ) {
 			var control = this, syncInput;
 
 			if ( ! control.fields.title.is( document.activeElement ) ) {
-<<<<<<< HEAD
 				syncInput = control.syncContainer.find( 'input[type=hidden].title' );
 				control.fields.title.val( syncInput.val() );
 			}
 
 			syncInput = control.syncContainer.find( 'input[type=hidden].text' );
-=======
-				syncInput = control.widgetContentContainer.find( 'input[type=hidden].title' );
-				control.fields.title.val( syncInput.val() );
-			}
-
-			syncInput = control.widgetContentContainer.find( 'input[type=hidden].text' );
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 			if ( control.fields.text.is( ':visible' ) ) {
 				if ( ! control.fields.text.is( document.activeElement ) ) {
 					control.fields.text.val( syncInput.val() );
@@ -217,16 +164,11 @@ wp.textWidgets = ( function( $ ) {
 		 * @returns {void}
 		 */
 		initializeEditor: function initializeEditor() {
-<<<<<<< HEAD
 			var control = this, changeDebounceDelay = 1000, id, textarea, triggerChangeIfDirty, restoreTextMode = false, needsTextareaChangeTrigger = false;
-=======
-			var control = this, changeDebounceDelay = 1000, id, textarea, restoreTextMode = false;
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 			textarea = control.fields.text;
 			id = textarea.attr( 'id' );
 
 			/**
-<<<<<<< HEAD
 			 * Trigger change if dirty.
 			 *
 			 * @returns {void}
@@ -272,25 +214,18 @@ wp.textWidgets = ( function( $ ) {
 			});
 
 			/**
-=======
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 			 * Build (or re-build) the visual editor.
 			 *
 			 * @returns {void}
 			 */
 			function buildEditor() {
-<<<<<<< HEAD
 				var editor, onInit, showPointerElement;
-=======
-				var editor, triggerChangeIfDirty, onInit;
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 
 				// Abort building if the textarea is gone, likely due to the widget having been deleted entirely.
 				if ( ! document.getElementById( id ) ) {
 					return;
 				}
 
-<<<<<<< HEAD
 				// The user has disabled TinyMCE.
 				if ( typeof window.tinymce === 'undefined' ) {
 					wp.editor.initialize( id, {
@@ -300,8 +235,6 @@ wp.textWidgets = ( function( $ ) {
 					return;
 				}
 
-=======
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 				// Destroy any existing editor so that it can be re-initialized after a widget-updated event.
 				if ( tinymce.get( id ) ) {
 					restoreTextMode = tinymce.get( id ).isHidden();
@@ -315,7 +248,6 @@ wp.textWidgets = ( function( $ ) {
 					quicktags: true
 				});
 
-<<<<<<< HEAD
 				/**
 				 * Show a pointer, focus on dismiss, and speak the contents for a11y.
 				 *
@@ -330,8 +262,6 @@ wp.textWidgets = ( function( $ ) {
 					} ).get().join( '\n\n' ) );
 				};
 
-=======
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 				editor = window.tinymce.get( id );
 				if ( ! editor ) {
 					throw new Error( 'Failed to initialize editor' );
@@ -345,7 +275,6 @@ wp.textWidgets = ( function( $ ) {
 
 					// If a prior mce instance was replaced, and it was in text mode, toggle to text mode.
 					if ( restoreTextMode ) {
-<<<<<<< HEAD
 						switchEditors.go( id, 'html' );
 					}
 
@@ -376,10 +305,6 @@ wp.textWidgets = ( function( $ ) {
 							showPointerElement( control.pasteHtmlPointer );
 						}, 250 );
 					});
-=======
-						switchEditors.go( id, 'toggle' );
-					}
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 				};
 
 				if ( editor.initialized ) {
@@ -389,7 +314,6 @@ wp.textWidgets = ( function( $ ) {
 				}
 
 				control.editorFocused = false;
-<<<<<<< HEAD
 
 				editor.on( 'focus', function onEditorFocus() {
 					control.editorFocused = true;
@@ -403,40 +327,6 @@ wp.textWidgets = ( function( $ ) {
 				});
 				editor.on( 'NodeChange', _.debounce( triggerChangeIfDirty, changeDebounceDelay ) );
 				editor.on( 'blur hide', function onEditorBlur() {
-=======
-				triggerChangeIfDirty = function() {
-					var updateWidgetBuffer = 300; // See wp.customize.Widgets.WidgetControl._setupUpdateUI() which uses 250ms for updateWidgetDebounced.
-					if ( editor.isDirty() ) {
-
-						/*
-						 * Account for race condition in customizer where user clicks Save & Publish while
-						 * focus was just previously given to to the editor. Since updates to the editor
-						 * are debounced at 1 second and since widget input changes are only synced to
-						 * settings after 250ms, the customizer needs to be put into the processing
-						 * state during the time between the change event is triggered and updateWidget
-						 * logic starts. Note that the debounced update-widget request should be able
-						 * to be removed with the removal of the update-widget request entirely once
-						 * widgets are able to mutate their own instance props directly in JS without
-						 * having to make server round-trips to call the respective WP_Widget::update()
-						 * callbacks. See <https://core.trac.wordpress.org/ticket/33507>.
-						 */
-						if ( wp.customize ) {
-							wp.customize.state( 'processing' ).set( wp.customize.state( 'processing' ).get() + 1 );
-							_.delay( function() {
-								wp.customize.state( 'processing' ).set( wp.customize.state( 'processing' ).get() - 1 );
-							}, updateWidgetBuffer );
-						}
-
-						editor.save();
-						textarea.trigger( 'change' );
-					}
-				};
-				editor.on( 'focus', function() {
-					control.editorFocused = true;
-				});
-				editor.on( 'NodeChange', _.debounce( triggerChangeIfDirty, changeDebounceDelay ) );
-				editor.on( 'blur', function() {
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 					control.editorFocused = false;
 					triggerChangeIfDirty();
 				});
@@ -463,11 +353,7 @@ wp.textWidgets = ( function( $ ) {
 	 * @returns {void}
 	 */
 	component.handleWidgetAdded = function handleWidgetAdded( event, widgetContainer ) {
-<<<<<<< HEAD
 		var widgetForm, idBase, widgetControl, widgetId, animatedCheckDelay = 50, widgetInside, renderWhenAnimationDone, fieldContainer, syncContainer;
-=======
-		var widgetForm, idBase, widgetControl, widgetId, animatedCheckDelay = 50, widgetInside, renderWhenAnimationDone;
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		widgetForm = widgetContainer.find( '> .widget-inside > .form, > .widget-inside > form' ); // Note: '.form' appears in the customizer, whereas 'form' on the widgets admin screen.
 
 		idBase = widgetForm.find( '> .id_base' ).val();
@@ -476,16 +362,11 @@ wp.textWidgets = ( function( $ ) {
 		}
 
 		// Prevent initializing already-added widgets.
-<<<<<<< HEAD
 		widgetId = widgetForm.find( '.widget-id' ).val();
-=======
-		widgetId = widgetForm.find( '> .widget-id' ).val();
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		if ( component.widgetControls[ widgetId ] ) {
 			return;
 		}
 
-<<<<<<< HEAD
 		// Bypass using TinyMCE when widget is in legacy mode.
 		if ( ! widgetForm.find( '.visual' ).val() ) {
 			return;
@@ -509,10 +390,6 @@ wp.textWidgets = ( function( $ ) {
 		widgetControl = new component.TextWidgetControl({
 			el: fieldContainer,
 			syncContainer: syncContainer
-=======
-		widgetControl = new component.TextWidgetControl({
-			el: widgetContainer
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		});
 
 		component.widgetControls[ widgetId ] = widgetControl;
@@ -535,7 +412,6 @@ wp.textWidgets = ( function( $ ) {
 	};
 
 	/**
-<<<<<<< HEAD
 	 * Setup widget in accessibility mode.
 	 *
 	 * @returns {void}
@@ -570,8 +446,6 @@ wp.textWidgets = ( function( $ ) {
 	};
 
 	/**
-=======
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 	 * Sync widget instance data sanitized from server back onto widget model.
 	 *
 	 * This gets called via the 'widget-updated' event when saving a widget from
@@ -634,14 +508,11 @@ wp.textWidgets = ( function( $ ) {
 				var widgetContainer = $( this );
 				component.handleWidgetAdded( new jQuery.Event( 'widget-added' ), widgetContainer );
 			});
-<<<<<<< HEAD
 
 			// Accessibility mode.
 			$( window ).on( 'load', function() {
 				component.setupAccessibleMode();
 			});
-=======
->>>>>>> 2d4162ef83d9c0396a318bfe50d316395c3c685e
 		});
 	};
 
